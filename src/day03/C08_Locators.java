@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 
 import java.time.Duration;
+import java.util.List;
 
 public class C08_Locators {
 
@@ -32,6 +33,19 @@ public class C08_Locators {
 
         // click on the search button with click() method
         searchButton.click();
+
+        // Generally it is not recommended to find locator with class name
+        // because class can be a name of group
+        // This approach is not acceptable during the test
+       List<WebElement> listClassLocators = driver.findElements(By.className("gh-p"));
+
+       for (int i = 0; i<listClassLocators.size(); i++){
+                 System.out.println(listClassLocators);
+       }
+
+        // Locator with linkText
+        WebElement linkTextEbayLocator = driver.findElement(By.linkText("https://www.ebay.com/sch/i.html?_nkw=galaxy+ai&_sop=12"));
+        linkTextEbayLocator.click();
 
 
         }
