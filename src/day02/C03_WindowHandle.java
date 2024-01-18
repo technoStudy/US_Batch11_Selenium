@@ -3,7 +3,7 @@ package day02;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class C04_WindowHandle {
+public class C03_WindowHandle {
     static WebDriver driver;
 
     public static void main(String[] args) {

@@ -5,7 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
-public class C02_WebDriverTests {
+public class C01_WebDriverTests {
 
     public static void main(String[] args) {
         // driver.get("") method Takes the driver to the desired URL.

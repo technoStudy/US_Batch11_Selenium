@@ -7,7 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
 
-public class C08_DriverManage {
+public class C07_DriverManage {
 
     public static void main(String[] args) {
 
