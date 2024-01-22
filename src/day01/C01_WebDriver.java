@@ -1,6 +1,5 @@
 package day01;
 
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -13,11 +12,6 @@ public class C01_WebDriver {
         WebDriver chromeDriver = new ChromeDriver() ;
         // The firs approach : Navigate to url
         chromeDriver.get("https://www.ebay.com");
-
+ 
     }
-
-
-
-
-
 }
