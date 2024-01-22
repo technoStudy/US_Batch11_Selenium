@@ -1,6 +1,7 @@
 package day05;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -31,33 +32,35 @@ public class C04_StatusOfElements {
     should be visually checked, indicating successful selection.
      */
 
-    @Test
-    public void productButtonIsDisplayed(){
-       // Navigate to URL https://automationexercise.com/
-        WebDriver driver = new ChromeDriver();
+    WebDriver driver;
+
+
+    @Before
+    public void setUp(){
+        // Navigate to URL https://automationexercise.com/
+        driver = new ChromeDriver();
         driver.get("https://automationexercise.com/");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+    }
+
+    @Test
+    public void productButtonIsDisplayed() throws InterruptedException {
         // Verify the presence of the 'Products' link or button on the home page.
         WebElement productButton = driver.findElement(By.xpath("//a[@href='/products']"));
         // Before we used if-else to test but in the JUnit we do not need to use if-else
         // instead of if-else we will use Assertion method
         // we can type a message, the message will be appearing when the test is fail
         // We will see the message, only if it's failed
+        Thread.sleep(3000);
         Assert.assertTrue("Product Button is not visible",productButton.isDisplayed());
         driver.close();
     }
 
     @Test
     public void CartButtonIsDisplayed() throws InterruptedException {
-        // Navigate to URL https://automationexercise.com/
-        WebDriver driver = new ChromeDriver();
-        driver.get("https://automationexercise.com/");
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         // Verify the presence of the 'Cart' link or button on the home page.
         WebElement cartButton = driver.findElement(By.xpath("(//a[@href='/view_cart'])[1]"));
-
         Thread.sleep(3000);
         Assert.assertTrue("Cart Button is not visible",cartButton.isDisplayed());
         driver.close();
@@ -65,11 +68,6 @@ public class C04_StatusOfElements {
 
     @Test
     public void signLoginButtonIsDisplayed() throws InterruptedException {
-        // Navigate to URL https://automationexercise.com/
-        WebDriver driver = new ChromeDriver();
-        driver.get("https://automationexercise.com/");
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         // Verify the presence of the 'Signup/Login' link or button on the home page
         WebElement signLoginButton = driver.findElement(By.xpath("//a[@href='/login']"));
         Thread.sleep(3000);
