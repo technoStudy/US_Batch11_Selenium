@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import utilities.ReusableMethods;
 
 import java.time.Duration;
 
@@ -33,7 +34,7 @@ public class C04_StatusOfElements {
      */
 
     WebDriver driver;
-
+    ReusableMethods reusableMethods = new ReusableMethods();
 
     @Before
     public void setUp(){
@@ -73,6 +74,11 @@ public class C04_StatusOfElements {
         Thread.sleep(3000);
         Assert.assertTrue("Signup/Login Button is not visible",signLoginButton.isDisplayed());
         driver.close();
+    }
+
+    @Test
+    public void videoTutorialsButtonIsDisplayed() {
+        reusableMethods.myWait(3);
     }
 
 
