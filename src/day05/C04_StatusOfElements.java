@@ -1,5 +1,6 @@
 package day05;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import utilities.ReusableMethods;
+
 
 import java.time.Duration;
 
@@ -22,15 +24,22 @@ public class C04_StatusOfElements {
     Products, Cart, Signup/Login, Video Tutorials, Testcases, API Testing, and Contact Us.
     Test Steps:
     Navigate to URL https://automationexercise.com/
-    Verify the presence of the 'Products' link or button on the home page.
-    Verify the presence of the 'Cart' link or button on the home page.
-    Verify the presence of the 'Signup/Login' link or button on the home page.
-    Verify the presence of the 'Video Tutorials' link or section on the home page.
-    Verify the presence of the 'Testcases' link or section on the home page.
-    Verify the presence of the 'API Testing' link or section on the home page.
-    Verify the presence of the 'Contact Us' link or section on the home page.
-    Expected Result: The gender radio button selected
-    should be visually checked, indicating successful selection.
+   1- Verify the presence of the 'Products' link or button on the home page.
+   2- Verify the presence of the 'Cart' link or button on the home page.
+   3- Verify the presence of the 'Signup/Login' link or button on the home page.
+   4- Verify the presence of the 'Video Tutorials' link or section on the home page.
+   5- Verify the presence of the 'Testcases' link or section on the home page.
+   6- Verify the presence of the 'API Testing' link or section on the home page.
+   7- Verify the presence of the 'Contact Us' link or section on the home page.
+    Expected Result:
+    The 'Products' link or button should be visible on the home page
+    The 'Cart' link or button should be visible on the home page
+    The 'Signup/Login' link or button should be visible on the home
+    The 'Video Tutorials' link or section should be visible on the home
+    The 'Testcases' link or section should be visible on the home
+    The 'API Testing' link or section should be visible on the home
+    The 'Contact Us' link or section should be visible on the home
+
      */
 
     WebDriver driver;
@@ -76,11 +85,34 @@ public class C04_StatusOfElements {
         driver.close();
     }
 
+
+    /*
+
+
+    6- Verify the presence of the 'API Testing' link or section on the home page.
+    7- Verify the presence of the 'Contact Us' link or section on the home page.
+     */
     @Test
     public void videoTutorialsButtonIsDisplayed() {
-        reusableMethods.myWait(3);
+        //4- Verify the presence of the 'Video Tutorials' link or section on the home page.
+        WebElement videoTutorialButton =
+                driver.findElement(By.xpath("//a[@href='https://www.youtube.com/c/AutomationExercise']"));
+        reusableMethods.myWait(2);
+        Assert.assertTrue(videoTutorialButton.isDisplayed());
+    }
+
+    @Test
+    public void testCasesIsDisplayed() {
+        //5- Verify the presence of the 'Testcase' link or button on the home page.
+        WebElement testCasesButton = driver.findElement(By.xpath("(//a[@href='/test_cases'])[1]"));
+        Assert.assertTrue("testcases Button is not visible", testCasesButton.isDisplayed());
     }
 
 
+
+    @After
+    public void tearDown(){
+        driver.quit();
+    }
 
 }
