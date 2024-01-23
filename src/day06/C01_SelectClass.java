@@ -1,5 +1,6 @@
 package day06;
 
+import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -109,15 +110,9 @@ public class C01_SelectClass {
         Assert.assertTrue(maleGender.isSelected());
     }
 
-
-
-    @Test
-    public void nameTextBoxFacebook(){
-
-    }
-    @Test
-    public void surnameTextBoxFacebook(){
-
+    @AfterClass
+    public static void tearDownClass(){
+        driver.quit();
     }
 
 
