@@ -1,5 +1,6 @@
 package day06;
 
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -78,19 +79,46 @@ public class C01_SelectClass {
         WebElement passwordTextBox = driver.findElement(By.xpath("//input[@autocomplete='new-password']")) ;
         passwordTextBox.sendKeys("xxxxxx");
         reusableMethods.myWait(2);
+
+
         //7-Select the date of birth from the given dropdown options.
         // for month
         WebElement monthList = driver.findElement(By.xpath("//select[@id='month']"));
-        Select select = new Select(monthList);
-        select.selectByVisibleText("Apr");
-        // for day
+        Select selectMonth = new Select(monthList);
+        selectMonth.selectByVisibleText("Apr");
+
+        // for day   Apr/14/1985
+        WebElement dayList = driver.findElement(By.xpath("//select[@id='day']"));
+        Select selectDay = new Select(dayList);
+        //selectDay.selectByIndex(13);// the birth day is 14th
+        // we know from the jana index is starting from 0
+        // it means when we type 0 index the code will return first item
+        // if index is 1 ==> 2nd item
+
+        selectDay.selectByVisibleText("14");
+
+        // for year
+        WebElement yearList = driver.findElement(By.xpath("//select[@id='year']"));
+        Select selectYear = new Select(yearList);
+        selectYear.selectByVisibleText("1985");
 
         //8-Select the gender by clicking the appropriate radio button.
+        WebElement maleGender = driver.findElement(By.xpath("//input[@value='2']"));
+        maleGender.click();
         //9-Verify that the selected gender radio button is checked.
-
-
+        Assert.assertTrue(maleGender.isSelected());
     }
 
+
+
+    @Test
+    public void nameTextBoxFacebook(){
+
+    }
+    @Test
+    public void surnameTextBoxFacebook(){
+
+    }
 
 
 }
