@@ -95,6 +95,7 @@ public class C01_ActionsClass extends TestBase {
 
     @Test
     public void hoverOverTest() {
+        Actions actions = new Actions(driver);
         // 2-On the homepage, click on the 'Widgets' button.
         WebElement widgetButton =
                 driver.findElement(By.xpath("(//div[@class='avatar mx-auto white'])[4]"));
@@ -102,12 +103,14 @@ public class C01_ActionsClass extends TestBase {
         widgetButton.click();
         // 3-On the Widgets page, click on the 'Menu' button.
         WebElement menuButton =
-                driver.findElement(By.xpath("(//li[@id='item-7'])[2]"));
-        menuButton.click();
+                driver.findElement(By.xpath("(//span[@class='text'])[23]"));
+        actions.moveToElement(menuButton).click(menuButton).build().perform();
+        ReusableMethods.myWait(1);
+
         // 4-Hover over the 'Main Item 2' to trigger the first popup.
         WebElement mainItem2Button = driver.findElement(By.xpath("(//a[@href='#'])[2]"));
         ReusableMethods.myWait(2);
-        Actions actions = new Actions(driver);
+
         actions.moveToElement(mainItem2Button).build().perform();
         //5-Move the mouse to hover over the 'SUB List' to trigger the second popup.
         ReusableMethods.myWait(2);
@@ -121,6 +124,9 @@ public class C01_ActionsClass extends TestBase {
         Assert.assertTrue(subItem1.isDisplayed());
 
     }
+
+
+
 
     @After
     public void tearDown() {
