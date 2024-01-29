@@ -1,9 +1,11 @@
 package day09;
 
+import org.checkerframework.checker.index.qual.PolyUpperBound;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import utilities.ReusableMethods;
 import utilities.TestBase;
 
 public class C02_JavaScriptExecutor extends TestBase {
@@ -13,6 +15,7 @@ public class C02_JavaScriptExecutor extends TestBase {
     // Creating the JavaScriptExecutor interface object by type casting
     // we said to driver, act like a JavaScriptExecutor interface
     JavascriptExecutor jsExecutor = (JavascriptExecutor) driver; // casting
+
     // We have many options but we will not use all of them because they are Java Script language
     @Test
     public void navigateUrlJsExecutor() {
@@ -21,21 +24,60 @@ public class C02_JavaScriptExecutor extends TestBase {
     }
 
     @Test
-    public void getCurrentPageUrlJsExecutor(){
+    public void getCurrentPageUrlJsExecutor() {
         jsExecutor.executeScript("window.location = 'https://the-internet.herokuapp.com'");
 
         // Get Current Page Url
         String currentUrl = (String) jsExecutor.executeScript("return document.URL");
-        System.out.println("Current Url :"+currentUrl);
+        System.out.println("Current Url :" + currentUrl);
     }
+
     @Test
-    public void getDomainCurrentPageJsExecutor(){
+    public void getDomainCurrentPageJsExecutor() {
         jsExecutor.executeScript("window.location = 'https://the-internet.herokuapp.com'");
         // Get Domain of Current Page
         String domain = (String) jsExecutor.executeScript("return document.domain");
         System.out.println(domain);
     }
 
+    // ********************* IMPORTANT *************************************************************
+    @Test
+    public void scrollToElementJsExecutor() {
+        jsExecutor.executeScript("window.location = 'https://the-internet.herokuapp.com'");
+        // Scroll to an Element
+        WebElement editorButton = driver.findElement(By.xpath("//a[@href='/tinymce']"));
+        ReusableMethods.myWait(2);
+        // we implemented locators to say scroll to this element
+        jsExecutor.executeScript("arguments[0].scrollIntoView(true);", editorButton);
+    }
 
+    //*************************************************************************************************
+    @Test
+    public void scrollWithCoordinatesPointJsExecutor() {
+        jsExecutor.executeScript("window.location = 'https://the-internet.herokuapp.com'");
+        // Scroll down with x,y coordinates
+        ReusableMethods.myWait(2);
+        jsExecutor.executeScript("window.scrollTo(0,500)");// scroll down to 500th pixel
+    }
 
+    @Test
+    public void clickOnElementJsExecutor() {
+        driver.get("https://the-internet.herokuapp.com");
+        WebElement editorButton = driver.findElement(By.xpath("//a[@href='/tinymce']"));
+        // for example this code is not running (working)==> editorButton.click();
+        // then we can use javascriptexecutor to click on the WebElement
+        jsExecutor.executeScript("arguments[0].scrollIntoView(true);", editorButton);
+        ReusableMethods.myWait(2);
+        // Click on an Element
+        jsExecutor.executeScript("arguments[0].click();", editorButton);
+
+    }
+
+    @Test
+    public void sendTextValueJsExecutor(){
+        driver.get("https://demo.guru99.com/V4/");
+
+        // please find how to send a text in a web element with JavaScriptExecutor
+        // userId:mngr550587 , password = rUveqUn
+    }
 }
