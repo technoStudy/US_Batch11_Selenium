@@ -32,7 +32,6 @@ public class C01_IFrame extends TestBase {
     @Test
     public void iframeTest() {
 
-
         // 3-‘An Iframe containing…’ test that the text is accessible and print it
         WebElement headerText = driver.findElement(By.tagName("h3"));
         Assert.assertTrue(headerText.isEnabled());// for accessible isEnabled is better option
