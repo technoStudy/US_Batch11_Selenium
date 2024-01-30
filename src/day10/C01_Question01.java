@@ -101,6 +101,9 @@ The "Email", "Facebook", and "Slack" icons in the footer are visible and identif
         WebElement slackIcon =
                 driver.findElement(By.xpath("(//i[@class='fab fa-slack'])[1]"));
         assertTrue(slackIcon.isDisplayed());
+
+        //  Assert class is called as a Hard assertion
+        //  when we get a fail hard assertion stop the code
     }
 
 
