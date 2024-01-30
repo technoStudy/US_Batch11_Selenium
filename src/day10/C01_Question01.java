@@ -11,6 +11,7 @@ import utilities.TestBase;
 
 import java.util.ArrayList;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class C01_Question01 extends TestBase {
@@ -64,12 +65,46 @@ The "Email", "Facebook", and "Slack" icons in the footer are visible and identif
         jsExecutor.executeScript("arguments[0].scrollIntoView(true);", githubIcon);
         ReusableMethods.myWait(2);
         githubIcon.click();
-       // 4-Verify that the GitHub page of Selenium is successfully accessed.
+
         // WebDriver driver stay Selenium home page, if we want to switch another page
         // we should use window handle value
         // in this case there are two window handle value
         //  we will put them in an arraylist
         ArrayList<String> windowHandleValues = new ArrayList<>(driver.getWindowHandles());
+        // [windowhandleSelenium,windowhandleGithub] ==> index 0 is Selenium, index 1 is GitHub
+        // 4-Verify that the GitHub page of Selenium is successfully accessed.
+        driver.switchTo().window(windowHandleValues.get(1));// jump to github
+        String githubActualTitle = driver.getTitle();
+        String githubExpectedTitle =
+                "GitHub - SeleniumHQ/selenium: A browser automation framework and ecosystem.";
+        assertEquals(githubExpectedTitle, githubActualTitle);
+
+        //5-Return to the Selenium homepage.
+        driver.switchTo().window(windowHandleValues.get(0));// jump to selenium
+
+        // 6-Scroll to the footer and click on the "YouTube" link.
+        WebElement youtubeIcon =
+                driver.findElement(By.xpath("//i[@class='fab fa-youtube']"));
+        ReusableMethods.myWait(2);
+        youtubeIcon.click();
+      //  7-Return to the Selenium homepage.
+        driver.switchTo().window(windowHandleValues.get(0));// jump to selenium
+      //  8-Verify that the "Email" icon in the footer is visible.
+        WebElement emailIcon =
+                driver.findElement(By.xpath("//i[@class='fas fa-mail-bulk']"));
+        assertTrue(emailIcon.isDisplayed());
+      //  9-Verify that the "Facebook" icon in the footer is visible.
+        WebElement facebookIcon =
+                driver.findElement(By.xpath("(//i[@class='fab fa-facebook'])[1]"));
+        assertTrue(facebookIcon.isDisplayed());
+      //  10-Verify that the "Slack" icon in the footer is visible.
+        WebElement slackIcon =
+                driver.findElement(By.xpath("(//i[@class='fab fa-slack'])[1]"));
+        assertTrue(slackIcon.isDisplayed());
     }
+
+
+
+
 
 }
