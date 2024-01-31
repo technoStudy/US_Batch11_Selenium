@@ -25,12 +25,10 @@ public class ReusableMethods {
         TakesScreenshot screenshot = (TakesScreenshot) driver;
         // we need to implement date time
         LocalDateTime timeOfBug = LocalDateTime.now();
-        System.out.println("Current Time :"+timeOfBug);
         // let define the time format
         DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("MMddyyyyhhmmss");
         // month/day/year/hour/minutes/seconds
         String date = timeOfBug.format(timeFormat);
-        System.out.println("After the time format :"+date);
         // What is related to take screenshot and time?
         // When we run the test we can find many bugs then we need to order them
         // we can order automatically via date time
@@ -50,6 +48,10 @@ public class ReusableMethods {
            System.out.println(e.getMessage());
        }
     }
+
+
+
+
 
 
 }
