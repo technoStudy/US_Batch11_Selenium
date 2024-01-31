@@ -3,12 +3,11 @@ package day10;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import utilities.ReusableMethods;
 import utilities.TestBase;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
@@ -41,6 +40,7 @@ The Selenium homepage loads successfully.
 The browser navigates to the Selenium GitHub page, and the page loads successfully.
 The browser navigates to the Selenium YouTube page, and the page loads successfully.
 The "Email", "Facebook", and "Slack" icons in the footer are visible and identifiable.
+
 
   */
     JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
@@ -101,10 +101,13 @@ The "Email", "Facebook", and "Slack" icons in the footer are visible and identif
         WebElement slackIcon =
                 driver.findElement(By.xpath("(//i[@class='fab fa-slack'])[1]"));
         assertTrue(slackIcon.isDisplayed());
-
         //  Assert class is called as a Hard assertion
         //  when we get a fail hard assertion stop the code
+
     }
+
+
+
 
 
 
